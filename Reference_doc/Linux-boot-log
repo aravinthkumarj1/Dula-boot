@@ -1,0 +1,584 @@
+U-Boot 2016.01-00277-g57e5eca (Feb 20 2016 - 18:01:30 +0530)
+
+CPU:   Freescale i.MX6DL rev1.1 996 MHz (running at 792 MHz)
+CPU:   Commercial temperature grade (0C to 95C) at 51C
+Reset cause: WDOG
+Board: MX6-SabreSD
+I2C:   ready
+DRAM:  1 GiB
+PMIC:  PFUZE100 ID=0x10
+MMC:   FSL_SDHC: 0, FSL_SDHC: 1, FSL_SDHC: 2
+PCI:   pcie phy link never came up
+No panel detected: default to Hannstar-XGA
+Display: Hannstar-XGA (1024x768)
+In:    serial
+Out:   serial
+Err:   serial
+Net:   FEC [PRIME]
+Hit any key to stop autoboot:  0 
+mmc - MMC sub system
+
+Usage:
+mmc info - display info of the current MMC device
+mmc read addr blk# cnt
+mmc write addr blk# cnt
+mmc erase blk# cnt
+mmc rescan
+mmc part - lists available partition on current mmc device
+mmc dev [dev] [part] - show or set current mmc device [partition]
+mmc list - lists available devices
+mmc hwpartition [args...] - does hardware partitioning
+  arguments (sizes in 512-byte blocks):
+    [user [enh start cnt] [wrrel {on|off}]] - sets user data area attributes
+    [gp1|gp2|gp3|gp4 cnt [enh] [wrrel {on|off}]] - general purpose partition
+    [check|set|complete] - mode, complete set partitioning completed
+  WARNING: Partitioning is a write-once setting once it is set to complete.
+  Power cycling is required to initialize partitions after set to complete.
+mmc bootbus dev boot_bus_width reset_boot_bus_width boot_mode
+ - Set the BOOT_BUS_WIDTH field of the specified device
+mmc bootpart-resize <dev> <boot part size MB> <RPMB part size MB>
+ - Change sizes of boot and RPMB partitions of specified device
+mmc partconf dev boot_ack boot_partition partition_access
+ - Change the bits of the PARTITION_CONFIG field of the specified device
+mmc rst-function dev value
+ - Change the RST_n_FUNCTION field of the specified device
+   WARNING: This is a write-once field and 0 / 1 / 2 are the only valid values.
+mmc setdsr <value> - set DSR register value
+
+reading imx6dl-sabresd.dtb
+42849 bytes read in 20 ms (2 MiB/s)
+reading uImage
+6110216 bytes read in 304 ms (19.2 MiB/s)
+## Booting kernel from Legacy Image at 12800000 ...
+   Image Name:   Linux-3.14.28-1.0.0_ga+g91cf351
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    6110152 Bytes = 5.8 MiB
+   Load Address: 12700000
+   Entry Point:  12700000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 11200000
+   Booting using the fdt blob at 0x11200000
+   Loading Kernel Image ... OK
+   Using Device Tree in place at 11200000, end 1120d760
+
+Starting kernel ...
+
+Booting Linux on physical CPU 0x0
+Linux version 3.14.28-1.0.0_ga+g91cf351 (manoj@manoj) (gcc version 4.6.2 20110630 (prerelease) (Freescale MAD -- Linaro 2011.07 -- Built at 206
+CPU: ARMv7 Processor [412fc09a] revision 10 (ARMv7), cr=10c53c7d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+Machine model: Freescale i.MX6 DualLite SABRE Smart Device Board
+cma: CMA: reserved 320 MiB at 3c000000
+Memory policy: Data cache writealloc
+PERCPU: Embedded 8 pages/cpu @ab732000 s8896 r8192 d15680 u32768
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+Kernel command line: console=ttymxc0,115200 root=/dev/mmcblk2p2 rootwait rw
+PID hash table entries: 4096 (order: 2, 16384 bytes)
+Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+Memory: 696296K/1048576K available (7375K kernel code, 395K rwdata, 6204K rodata, 328K init, 429K bss, 352280K reserved, 0K highmem)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    vmalloc : 0xc0800000 - 0xff000000   (1000 MB)
+    lowmem  : 0x80000000 - 0xc0000000   (1024 MB)
+    pkmap   : 0x7fe00000 - 0x80000000   (   2 MB)
+    modules : 0x7f000000 - 0x7fe00000   (  14 MB)
+      .text : 0x80008000 - 0x80d4b020   (13581 kB)
+      .init : 0x80d4c000 - 0x80d9e2c0   ( 329 kB)
+      .data : 0x80da0000 - 0x80e02e40   ( 396 kB)
+       .bss : 0x80e02e4c - 0x80e6e614   ( 430 kB)
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+Preemptible hierarchical RCU implementation.
+        RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+NR_IRQS:16 nr_irqs:16 16
+L310 cache controller enabled
+l2x0: 16 ways, CACHE_ID 0x410000c8, AUX_CTRL 0x32450000, Cache size: 512 kB
+failed to set parent of clk gpu2d_core_sel to pll2_pfd1_594m: -22
+Switching to timer-based delay loop
+sched_clock: 32 bits at 3000kHz, resolution 333ns, wraps every 1431655765682ns
+Console: colour dummy device 80x30
+Calibrating delay loop (skipped), value calculated using timer frequency.. 6.00 BogoMIPS (lpj=30000)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+CPU: Testing write buffer coherency: ok
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x10701c70 - 0x10701cc8
+CPU1: Booted secondary processor
+CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+Brought up 2 CPUs
+SMP: Total of 2 processors activated.
+CPU: All CPU(s) started in SVC mode.
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+pinctrl core: initialized pinctrl subsystem
+regulator-dummy: no parameters
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+cpuidle: using governor ladder
+cpuidle: using governor menu
+CPU identified as i.MX6DL, silicon rev 1.1
+Use WDOG2 as reset source
+syscon 20c8000.anatop: regmap [mem 0x020c8000-0x020c8fff] registered
+vdd1p1: 800 <--> 1375 mV at 1100 mV 
+vdd3p0: 2800 <--> 3150 mV at 3000 mV 
+vdd2p5: 2000 <--> 2750 mV at 2400 mV 
+vddarm: 725 <--> 1450 mV at 1150 mV 
+vddpu: 725 <--> 1450 mV at 1150 mV 
+vddsoc: 725 <--> 1450 mV at 1175 mV 
+syscon 20e0000.iomuxc-gpr: regmap [mem 0x020e0000-0x020e0037] registered
+syscon 21bc000.ocotp-ctrl: regmap [mem 0x021bc000-0x021bffff] registered
+hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+hw-breakpoint: maximum watchpoint size is 4 bytes.
+imx6dl-pinctrl 20e0000.iomuxc: initialized IMX pinctrl driver
+bio: create slab <bio-0> at 0
+mxs-dma 110000.dma-apbh: initialized
+usb_otg_vbus: 5000 mV 
+usb_h1_vbus: 5000 mV 
+wm8962-supply: no parameters
+mipi_dsi_pwr_on: no parameters
+sensor-supply: 3300 mV 
+i2c-core: driver [max17135] using legacy suspend method
+i2c-core: driver [max17135] using legacy resume method
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+usbphy_nop1.12 supply vcc not found, using dummy regulator
+usbphy_nop2.13 supply vcc not found, using dummy regulator
+i2c i2c-0: IMX I2C adapter registered
+i2c i2c-1: IMX I2C adapter registered
+i2c i2c-2: Max17135 PMIC not found!
+i2c i2c-2: IMX I2C adapter registered
+Linux video capture interface: v2.00
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+imx-ipuv3 2400000.ipu: IPU DMFC NORMAL mode: 1(0~1), 5B(4,5), 5F(6,7)
+mxc_mipi_csi2 21dc000.mipi_csi: i.MX MIPI CSI2 driver probed
+mxc_mipi_csi2 21dc000.mipi_csi: i.MX MIPI CSI2 dphy version is 0x3130302a
+MIPI CSI2 driver module loaded
+Advanced Linux Sound Architecture Driver Initialized.
+Bluetooth: Core ver 2.18
+NET: Registered protocol family 31
+Bluetooth: HCI device and connection manager initialized
+Bluetooth: HCI socket layer initialized
+Bluetooth: L2CAP socket layer initialized
+Bluetooth: SCO socket layer initialized
+cfg80211: Calling CRDA to update world regulatory domain
+Switched to clocksource mxc_timer1
+NET: Registered protocol family 2
+TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+TCP bind hash table entries: 8192 (order: 4, 65536 bytes)
+TCP: Hash tables configured (established 8192 bind 8192)
+TCP: reno registered
+UDP hash table entries: 512 (order: 2, 16384 bytes)
+UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 7 counters available
+Bus freq driver module loaded
+futex hash table entries: 512 (order: 3, 32768 bytes)
+VFS: Disk quotas dquot_6.5.2
+Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+NFS: Registering the id_resolver key type
+Key type id_resolver registered
+Key type id_legacy registered
+NTFS driver 2.1.30 [Flags: R/W].
+jffs2: version 2.2. (NAND) �© 2001-2006 Red Hat, Inc.
+fuse init (API version 7.22)
+msgmni has been set to 1999
+io scheduler noop registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+imx-weim 21b8000.weim: Driver registered.
+backlight.27 supply power not found, using dummy regulator
+mxc_mipi_dsi 21e0000.mipi: i.MX MIPI DSI driver probed
+MIPI DSI driver module loaded
+mxc_sdc_fb fb.24: registered mxc display driver ldb
+imx-ipuv3 2400000.ipu: IPU DMFC DP HIGH RESOLUTION: 1(0,1), 5B(2~5), 5F(6,7)
+Console: switching to colour frame buffer device 128x48
+mxc_hdmi 20e0000.hdmi_video: Detected HDMI controller 0x13:0x1a:0xa0:0xc1
+fbcvt: 1920x1080@60: CVT Name - 2.073M9
+mxc_sdc_fb fb.25: registered mxc display driver hdmi
+imx_epdc_fb 20f4000.epdc: Unable to get display PMIC regulator.err = 0xfffffdfb
+imx-sdma 20ec000.sdma: no iram assigned, using external mem
+imx-sdma 20ec000.sdma: no event needs to be remapped
+imx-sdma 20ec000.sdma: loaded firmware 3.1
+imx-sdma 20ec000.sdma: initialized
+pfuze100-regulator 1-0008: Full layer: 1, Metal layer: 1
+pfuze100-regulator 1-0008: FAB: 0, FIN: 0
+pfuze100-regulator 1-0008: pfuze100 found.
+SW1AB: 300 <--> 1875 mV at 1375 mV 
+SW1C: 300 <--> 1875 mV at 1375 mV 
+SW2: 800 <--> 3300 mV at 3300 mV 
+SW3A: 400 <--> 1975 mV at 1500 mV 
+SW3B: 400 <--> 1975 mV at 1500 mV 
+SW4: 800 <--> 3300 mV at 3150 mV 
+SWBST: 5000 <--> 5150 mV at 5000 mV 
+VSNVS: 1000 <--> 3000 mV at 3000 mV 
+VREFDDR: 750 mV 
+VGEN1: 800 <--> 1550 mV at 1500 mV 
+VGEN2: 800 <--> 1550 mV at 1500 mV 
+VGEN3: 1800 <--> 3300 mV at 2800 mV 
+VGEN4: 1800 <--> 3300 mV at 1800 mV 
+VGEN5: 1800 <--> 3300 mV at 3000 mV 
+VGEN6: 1800 <--> 3300 mV at 3300 mV 
+Serial: IMX driver
+2020000.serial: ttymxc0 at MMIO 0x2020000 (irq = 58, base_baud = 5000000) is a IMX
+console [ttymxc0] enabled
+serial: Freescale lpuart driver
+imx sema4 driver is registered.
+[drm] Initialized drm 1.1.0 20060810
+[drm] Initialized vivante 1.0.0 20120216 on minor 0
+brd: module loaded
+loop: module loaded
+of_dma_request_slave_channel: dma-names property of node '/soc/aips-bus@02000000/spba-bus@02000000/ecspi@02008000' missing or empty
+spi_imx 2008000.ecspi: cannot get the TX DMA channel!
+spi_imx 2008000.ecspi: dma setup error,use pio instead
+m25p80 spi0.0: m25p32 (4096 Kbytes)
+spi_imx 2008000.ecspi: probed
+CAN device driver interface
+2188000.ethernet supply phy not found, using dummy regulator
+pps pps0: new PPS source ptp0
+libphy: fec_enet_mii_bus: probed
+fec 2188000.ethernet eth0: registered PHC device 0
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci-mxc: Freescale On-Chip EHCI Host driver
+usbcore: registered new interface driver usb-storage
+2184800.usbmisc supply vbus-wakeup not found, using dummy regulator
+ci_hdrc ci_hdrc.1: doesn't support gadget
+ci_hdrc ci_hdrc.1: EHCI Host Controller
+ci_hdrc ci_hdrc.1: new USB bus registered, assigned bus number 1
+ci_hdrc ci_hdrc.1: USB 2.0 started, EHCI 1.00
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+mousedev: PS/2 mouse device common for all mice
+egalax_ts 1-0004: Failed to read firmware version
+egalax_ts: probe of 1-0004 failed with error -5
+input: EETI eGalax Touch Screen as /devices/soc0/soc.0/2100000.aips-bus/21a8000.i2c/i2c-2/2-0004/input/input1
+input: max11801_ts as /devices/soc0/soc.0/2100000.aips-bus/21a4000.i2c/i2c-1/1-0048/input/input2
+input: isl29023 light sensor as /devices/virtual/input/input3
+isl29023 2-0044: driver version 1.0 enabled
+i2c-core: driver [isl29023] using legacy suspend method
+i2c-core: driver [isl29023] using legacy resume method
+snvs_rtc 20cc034.snvs-rtc-lp: rtc core: registered 20cc034.snvs-rtc-lp as rtc0
+i2c /dev entries driver
+IR NEC protocol handler initialized
+IR RC5(x) protocol handler initialized
+IR RC6 protocol handler initialized
+IR JVC protocol handler initialized
+IR Sony protocol handler initialized
+IR RC5 (streamzap) protocol handler initialized
+IR SANYO protocol handler initialized
+IR MCE Keyboard/mouse protocol handler initialized
+mxc_v4l2_output v4l2_out.30: V4L2 device registered as video16
+mxc_v4l2_output v4l2_out.30: V4L2 device registered as video17
+mxc_v4l2_output v4l2_out.30: V4L2 device registered as video18
+mag3110 2-000e: check mag3110 chip ID
+input: mag3110 as /devices/virtual/input/input4
+mag3110 2-000e: mag3110 is probed
+i2c-core: driver [mag3110] using legacy suspend method
+i2c-core: driver [mag3110] using legacy resume method
+input: mma845x as /devices/virtual/input/input5
+imx2-wdt 20c0000.wdog: IMX2+ Watchdog Timer enabled. timeout=60s (nowayout=0)
+Bluetooth: HCI UART driver ver 2.2
+Bluetooth: HCI H4 protocol initialized
+Bluetooth: HCI BCSP protocol initialized
+Bluetooth: HCIATH3K protocol initialized
+usbcore: registered new interface driver bcm203x
+usbcore: registered new interface driver btusb
+Bluetooth: Generic Bluetooth SDIO driver ver 0.1
+usbcore: registered new interface driver ath3k
+sdhci: Secure Digital Host Controller Interface driver
+sdhci: Copyright(c) Pierre Ossman
+sdhci-pltfm: SDHCI platform and OF driver helper
+mmc1: no vqmmc regulator found
+mmc1: no vmmc regulator found
+mmc1: SDHCI controller on 2194000.usdhc [2194000.usdhc] using ADMA
+mmc2: no vqmmc regulator found
+mmc2: no vmmc regulator found
+mmc2: SDHCI controller on 2198000.usdhc [2198000.usdhc] using ADMA
+mmc3: no vqmmc regulator found
+mmc3: no vmmc regulator found
+mmc3: SDHCI controller on 219c000.usdhc [219c000.usdhc] using ADMA
+galcore: clk_get vg clock failed, disable vg!
+Galcore version 5.0.11.25762
+mmc2: new high speed SDHC card at address 0007
+mmcblk2: mmc2:0007 SD04G 3.70 GiB 
+ mmcblk2: p1 p2
+mmc3: new high speed DDR MMC card at address 0001
+mmcblk3: mmc3:0001 SEM08G 7.39 GiB 
+mmcblk3boot0: mmc3:0001 SEM08G partition 1 1.00 MiB
+mmcblk3boot1: mmc3:0001 SEM08G partition 2 1.00 MiB
+mmcblk3rpmb: mmc3:0001 SEM08G partition 3 128 KiB
+ mmcblk3: unknown partition table
+ mmcblk3boot1: unknown partition table
+ mmcblk3boot0: unknown partition table
+mxc_vdoa 21e4000.vdoa: i.MX Video Data Order Adapter(VDOA) driver probed
+mxc_vpu 2040000.vpu: VPU initialized
+caam 2100000.caam: Instantiated RNG4 SH0
+caam 2100000.caam: Instantiated RNG4 SH1
+caam 2100000.caam: device ID = 0x0a160100 (Era 4)
+caam 2100000.caam: job rings = 2, qi = 0
+caam algorithms registered in /proc/crypto
+caam_jr 2101000.jr0: registering rng-caam
+platform caam_sm: blkkey_ex: 4 keystore units available
+platform caam_sm: 64-bit clear key:
+platform caam_sm: [0000] 00 01 02 03 04 0f 06 07
+platform caam_sm: 64-bit black key:
+platform caam_sm: [0000] 96 bc 49 d6 0b af 11 e7
+platform caam_sm: [0008] e1 bb 72 d1 d8 65 b1 b8
+platform caam_sm: 128-bit clear key:
+platform caam_sm: [0000] 00 01 02 03 04 0f 06 07
+platform caam_sm: [0008] 08 09 0a 0b 0c 0d 0e 0f
+platform caam_sm: 128-bit black key:
+platform caam_sm: [0000] 2a e2 d0 75 85 54 10 6e
+platform caam_sm: [0008] 38 5f ed fe 67 03 19 99
+platform caam_sm: 192-bit clear key:
+platform caam_sm: [0000] 00 01 02 03 04 0f 06 07
+platform caam_sm: [0008] 08 09 0a 0b 0c 0d 0e 0f
+platform caam_sm: [0016] 10 11 12 13 14 15 16 17
+platform caam_sm: 192-bit black key:
+platform caam_sm: [0000] 32 1d e8 9d e8 c1 ee f0
+platform caam_sm: [0008] e2 fa 2d b5 3e a0 84 93
+platform caam_sm: [0016] 94 eb 6c df 5f db bd ed
+platform caam_sm: [0024] 21 36 ae 61 a9 8e 75 d9
+platform caam_sm: 256-bit clear key:
+platform caam_sm: [0000] 00 01 02 03 04 0f 06 07
+platform caam_sm: [0008] 08 09 0a 0b 0c 0d 0e 0f
+platform caam_sm: [0016] 10 11 12 13 14 15 16 17
+platform caam_sm: [0024] 18 19 1a 1b 1c 1d 1e 1f
+platform caam_sm: 256-bit black key:
+platform caam_sm: [0000] 12 8d 5b 27 79 f7 65 b5
+platform caam_sm: [0008] b3 8e ca 4a 30 8e 70 9e
+platform caam_sm: [0016] 91 a1 15 08 f2 d2 1e 52
+platform caam_sm: [0024] d9 da b4 77 fe 7c b6 72
+platform caam_sm: 64-bit unwritten blob:
+platform caam_sm: [0000] 00 00 00 00 00 00 00 00
+platform caam_sm: [0008] 00 00 00 00 00 00 00 00
+platform caam_sm: [0016] 00 00 00 00 00 00 00 00
+platform caam_sm: [0024] 00 00 00 00 00 00 00 00
+platform caam_sm: [0032] 00 00 00 00 00 00 00 00
+platform caam_sm: [0040] 00 00 00 00 00 00 00 00
+platform caam_sm: [0048] 00 00 00 00 00 00 00 00
+platform caam_sm: [0056] 00 00 00 00 00 00 00 00
+platform caam_sm: [0064] 00 00 00 00 00 00 00 00
+platform caam_sm: [0072] 00 00 00 00 00 00 00 00
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: 128-bit unwritten blob:
+platform caam_sm: [0000] 00 00 00 00 00 00 00 00
+platform caam_sm: [0008] 00 00 00 00 00 00 00 00
+platform caam_sm: [0016] 00 00 00 00 00 00 00 00
+platform caam_sm: [0024] 00 00 00 00 00 00 00 00
+platform caam_sm: [0032] 00 00 00 00 00 00 00 00
+platform caam_sm: [0040] 00 00 00 00 00 00 00 00
+platform caam_sm: [0048] 00 00 00 00 00 00 00 00
+platform caam_sm: [0056] 00 00 00 00 00 00 00 00
+platform caam_sm: [0064] 00 00 00 00 00 00 00 00
+platform caam_sm: [0072] 00 00 00 00 00 00 00 00
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: 196-bit unwritten blob:
+platform caam_sm: [0000] 00 00 00 00 00 00 00 00
+platform caam_sm: [0008] 00 00 00 00 00 00 00 00
+platform caam_sm: [0016] 00 00 00 00 00 00 00 00
+platform caam_sm: [0024] 00 00 00 00 00 00 00 00
+platform caam_sm: [0032] 00 00 00 00 00 00 00 00
+platform caam_sm: [0040] 00 00 00 00 00 00 00 00
+platform caam_sm: [0048] 00 00 00 00 00 00 00 00
+platform caam_sm: [0056] 00 00 00 00 00 00 00 00
+platform caam_sm: [0064] 00 00 00 00 00 00 00 00
+platform caam_sm: [0072] 00 00 00 00 00 00 00 00
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: 256-bit unwritten blob:
+platform caam_sm: [0000] 00 00 00 00 00 00 00 00
+platform caam_sm: [0008] 00 00 00 00 00 00 00 00
+platform caam_sm: [0016] 00 00 00 00 00 00 00 00
+platform caam_sm: [0024] 00 00 00 00 00 00 00 00
+platform caam_sm: [0032] 00 00 00 00 00 00 00 00
+platform caam_sm: [0040] 00 00 00 00 00 00 00 00
+platform caam_sm: [0048] 00 00 00 00 00 00 00 00
+platform caam_sm: [0056] 00 00 00 00 00 00 00 00
+platform caam_sm: [0064] 00 00 00 00 00 00 00 00
+platform caam_sm: [0072] 00 00 00 00 00 00 00 00
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: 64-bit black key in blob:
+platform caam_sm: [0000] aa 35 b9 80 90 e1 b1 71
+platform caam_sm: [0008] ba 96 4c d8 b6 82 ed 07
+platform caam_sm: [0016] 97 30 4a e0 a2 07 64 21
+platform caam_sm: [0024] 4a a3 49 21 b0 30 4f 3d
+platform caam_sm: [0032] 60 7b e1 f0 e2 7e f5 88
+platform caam_sm: [0040] 65 ab bf 7b 38 20 7b ff
+platform caam_sm: [0048] 22 98 40 36 9a 4c 62 be
+platform caam_sm: [0056] 00 00 00 00 00 00 00 00
+platform caam_sm: [0064] 00 00 00 00 00 00 00 00
+platform caam_sm: [0072] 00 00 00 00 00 00 00 00
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: 128-bit black key in blob:
+platform caam_sm: [0000] 37 da d0 3f 41 7d 51 78
+platform caam_sm: [0008] aa 0a c7 34 74 69 3d 40
+platform caam_sm: [0016] 70 af 26 4b 50 37 30 cb
+platform caam_sm: [0024] 10 a6 7e 81 8d e9 3c c0
+platform caam_sm: [0032] f8 07 54 df c2 a1 57 28
+platform caam_sm: [0040] 0d cf 21 f3 19 53 96 8c
+platform caam_sm: [0048] 68 fb 80 41 46 49 5e e2
+platform caam_sm: [0056] b9 72 b0 d8 d6 9f 8d 82
+platform caam_sm: [0064] 00 00 00 00 00 00 00 00
+platform caam_sm: [0072] 00 00 00 00 00 00 00 00
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: 192-bit black key in blob:
+platform caam_sm: [0000] f6 2a ca ca 0b 24 8d 6a
+platform caam_sm: [0008] 57 1b 75 38 af 84 8f c1
+platform caam_sm: [0016] 9e 00 7a 6c e1 72 86 9c
+platform caam_sm: [0024] f4 56 2c 5c 7f da a6 e2
+platform caam_sm: [0032] 9b 87 8e 55 37 1a 6d 26
+platform caam_sm: [0040] 6a d3 1b c8 4f c9 f1 1b
+platform caam_sm: [0048] 87 d4 b5 8d 4b 1d d9 86
+platform caam_sm: [0056] 59 cd 20 0e 42 b0 80 bb
+platform caam_sm: [0064] ec 4f 80 fd 71 40 85 c4
+platform caam_sm: [0072] 00 00 00 00 00 00 00 00
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: 256-bit black key in blob:
+platform caam_sm: [0000] 99 93 4b 70 15 d1 e6 9a
+platform caam_sm: [0008] 43 22 dd 42 ab 5b 7f d6
+platform caam_sm: [0016] 2d 7b b6 47 98 87 12 b6
+platform caam_sm: [0024] c5 91 92 63 6d ee 47 c0
+platform caam_sm: [0032] ae 82 ca 2a 5b 86 e5 f2
+platform caam_sm: [0040] 0b 1d fd 05 9f e9 d1 ec
+platform caam_sm: [0048] a1 a3 33 bf 44 d7 2b fc
+platform caam_sm: [0056] 0c bd 05 63 a3 6a 43 9c
+platform caam_sm: [0064] 06 ec c3 07 a8 48 2f 2e
+platform caam_sm: [0072] 91 a2 ad 07 76 d1 5f ac
+platform caam_sm: [0080] 00 00 00 00 00 00 00 00
+platform caam_sm: [0088] 00 00 00 00 00 00 00 00
+platform caam_sm: restored 64-bit black key:
+platform caam_sm: [0000] 6c c9 fc 7d 07 58 71 d7
+platform caam_sm: [0008] 76 0d ec 31 84 a1 93 04
+platform caam_sm: restored 128-bit black key:
+platform caam_sm: [0000] 2a e2 d0 75 85 54 10 6e
+platform caam_sm: [0008] 38 5f ed fe 67 03 19 99
+platform caam_sm: restored 192-bit black key:
+platform caam_sm: [0000] 32 1d e8 9d e8 c1 ee f0
+platform caam_sm: [0008] e2 fa 2d b5 3e a0 84 93
+platform caam_sm: [0016] 7a ed 64 96 9d 75 a4 85
+platform caam_sm: [0024] a3 a0 ee 58 bb 9b ea bc
+platform caam_sm: restored 256-bit black key:
+platform caam_sm: [0000] 12 8d 5b 27 79 f7 65 b5
+platform caam_sm: [0008] b3 8e ca 4a 30 8e 70 9e
+platform caam_sm: [0016] 91 a1 15 08 f2 d2 1e 52
+platform caam_sm: [0024] d9 da b4 77 fe 7c b6 72
+snvs-secvio 20cc000.caam-snvs: violation handlers armed - non-secure state
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+wm8962 0-001a: customer id 0 revision D
+fsl-asrc 2034000.asrc: driver registered
+input: WM8962 Beep Generator as /devices/soc0/soc.0/2100000.aips-bus/21a0000.i2c/i2c-0/0-001a/input/input6
+imx-wm8962 sound.22: wm8962 <-> 202c000.ssi mapping ok
+imx-audio-hdmi sound-hdmi.23: hdmi-hifi <-> hdmi_audio.3 mapping ok
+NET: Registered protocol family 26
+TCP: cubic registered
+NET: Registered protocol family 10
+sit: IPv6 over IPv4 tunneling driver
+NET: Registered protocol family 17
+can: controller area network core (rev 20120528 abi 9)
+NET: Registered protocol family 29
+can: raw protocol (rev 20120528)
+can: broadcast manager protocol (rev 20120528 t)
+can: netlink gateway (rev 20130117) max_hops=1
+Bluetooth: RFCOMM TTY layer initialized
+Bluetooth: RFCOMM socket layer initialized
+Bluetooth: RFCOMM ver 1.11
+Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+Bluetooth: BNEP filters: protocol multicast
+Bluetooth: BNEP socket layer initialized
+Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+Bluetooth: HIDP socket layer initialized
+8021q: 802.1Q VLAN Support v1.8
+Key type dns_resolver registered
+failed to disable 1.2 GHz OPP
+VGEN3: disabling
+VGEN2: disabling
+VGEN1: disabling
+SWBST: disabling
+SW4: disabling
+wm8962-supply: disabling
+usb_otg_vbus: disabling
+regulator-dummy: disabling
+imx mcc test is registered.
+using random self ethernet address
+using random host ethernet address
+usb0: HOST MAC 06:30:2f:ef:6e:af
+usb0: MAC 7a:bf:07:f3:93:91
+using random self ethernet address
+using random host ethernet address
+g_ether gadget: Ethernet Gadget, version: Memorial Day 2008
+g_ether gadget: g_ether ready
+input: gpio-keys.21 as /devices/soc0/gpio-keys.21/input/input9
+snvs_rtc 20cc034.snvs-rtc-lp: setting system clock to 1970-01-01 00:00:02 UTC (2)
+ALSA device list:
+  #0: wm8962-audio
+  #1: imx-hdmi-soc
+EXT3-fs (mmcblk2p2): error: couldn't mount because of unsupported optional features (240)
+EXT2-fs (mmcblk2p2): error: couldn't mount because of unsupported optional features (240)
+EXT4-fs (mmcblk2p2): mounted filesystem with ordered data mode. Opts: (null)
+VFS: Mounted root (ext4 filesystem) on device 179:2.
+devtmpfs: mounted
+Freeing unused kernel memory: 328K (80d4c000 - 80d9e000)
+starting pid 177, tty '': '/etc/rc.d/rcS'
+Mounting /proc and /sys 
+Starting the hotplug events dispatcher udevd
+udevd (186): /proc/186/oom_adj is deprecated, please use /proc/186/oom_score_adj instead.
+Synthesizing initial hotplug events
+Setting the hostname to freescale
+Mounting filesystems
+EXT4-fs (mmcblk2p2): re-mounted. Opts: (null)
+mount: mounting usbfs on /proc/bus/usb failed: No such file or directory
+Starting the dropbear ssh server: 
+random: dropbear urandom read with 88 bits of entropy available
+D-Bus per-session daemon address is: unix:abstract=/tmp/dbus-yYiCHg9EOi,guid=9f17bdd84f610b4cd611bfdf00000007
+random: nonblocking pool is initialized
+gtk: creating gdk-pixbuf.loaders
+pango: creating module list
+starting pid 1172, tty '': '/etc/rc.d/rc_gpu.S'
+/etc/rc.d/rc_gpu.S: line 6: /sys/module/galcore/parameters/gpu3DMinClock: Permission denied
+starting pid 1180, tty '': '/etc/rc.d/rc_mxc.S'
+(EE) XKB: Couldn't open rules file /usr/share/X11/xkb/rules/base
+(EE) XKB: No components provided for device Virtual core keyboard
+
+arm-none-linux-gnueabi-gcc (Freescale MAD -- Linaro 2011.07 -- Built at 2011/08/10 09:20) 4.6.2 20110630 (prerelease)
+root filesystem built on Fri, 16 Aug 2013 20:23:44 +0800
+Freescale Semiconductor, Inc.
+
+freescale login: unrecognised device identifier!
+(EE) config/hal: NewInputDeviceRequest failed (2)
+
+arm-none-linux-gnueabi-gcc (Freescale MAD -- Linaro 2011.07 -- Built at 2011/08/10 09:20) 4.6.2 20110630 (prerelease)
+root filesystem built on Fri, 16 Aug 2013 20:23:44 +0800
+Freescale Semiconductor, Inc.
+
+freescale login: root
+login[1182]: root login on 'ttymxc0'
+
+
+BusyBox v1.20.2 () built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+root@freescale ~$ cd /
+root@freescale /$ ls
+Install-bin  etc          lost+found   root         tmp
+Zumi_old     home         mnt          sbin         unit_tests
+bin          include      opt          share        usr
+dev          lib          proc         sys          var
+root@freescale /$

@@ -1,0 +1,41 @@
+=> pri
+baudrate=115200
+board_name=SABRESD
+board_rev=MX6DL
+boot_fdt=try
+bootcmd=mmc start; run mmcargs; fatload mmc 1:1 0x11200000 imx6dl-sabresd.dtb; fatload mmc 1:1 0x12800000 uImage; bootm 0x12800000 - 0x11200000
+bootdelay=3
+bootscript=echo Running bootscript from mmc ...; source
+console=ttymxc0
+dfu_alt_info=spl raw 0x400
+dfu_alt_info_img=u-boot raw 0x10000
+dfu_alt_info_spl=spl raw 0x400
+dfuspi=dfu 0 sf 0:0:10000000:0
+emmcdev=2
+ethact=FEC
+ethaddr=00:04:9f:03:bc:72
+ethprime=FEC
+fdt_addr=0x18000000
+fdt_file=undefined
+fdt_high=0xffffffff
+findfdt=if test $fdt_file = undefined; then if test $board_name = SABREAUTO && test $board_rev = MX6QP; then setenv fdt_file imx6qp-sabreauto.;
+image=zImage
+initrd_high=0xffffffff
+ip_dyn=yes
+loadaddr=0x12000000
+loadbootscript=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};
+loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}
+loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}
+mmcargs=setenv bootargs console=${console},${baudrate} root=${mmcroot}
+mmcboot=echo Booting from mmc ...; run mmcargs; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadadd;
+mmcdev=1
+mmcpart=1
+mmcroot=/dev/mmcblk2p2 rootwait rw
+netargs=setenv bootargs console=${console},${baudrate} root=/dev/nfs ip=dhcp nfsroot=${serverip}:${nfsroot},v3,tcp
+netboot=echo Booting from net ...; run netargs; if test ${ip_dyn} = yes; then setenv get_cmd dhcp; else setenv get_cmd tftp; fi; ${get_cmd} ${;
+script=boot.scr
+update_emmc_firmware=if test ${ip_dyn} = yes; then setenv get_cmd dhcp; else setenv get_cmd tftp; fi; if ${get_cmd} ${update_sd_firmware_fileni
+update_sd_firmware=if test ${ip_dyn} = yes; then setenv get_cmd dhcp; else setenv get_cmd tftp; fi; if mmc dev ${mmcdev}; then if ${get_cmd} $i
+
+Environment size: 3120/8188 bytes
+=> 
